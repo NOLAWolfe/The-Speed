@@ -7,8 +7,9 @@ import com.wolfe.speed.beans.User;
 
 @Repository
 public interface UserDAO extends JpaRepository<User, Integer> {
-	
-	
-	
-	
+
+	public User getByUserid(int userid);
+
+	public User getByUsername(String username);
+
 }
