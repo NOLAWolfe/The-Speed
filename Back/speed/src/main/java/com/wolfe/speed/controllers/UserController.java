@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wolfe.speed.beans.User;
-import com.wolfe.speed.daos.UserDAO;
+import com.wolfe.speed.repositories.UserDAO;
 
 @RestController
 @RequestMapping(value="/api")

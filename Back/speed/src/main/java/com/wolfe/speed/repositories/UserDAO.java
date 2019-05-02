@@ -1,4 +1,4 @@
-package com.wolfe.speed.daos;
+package com.wolfe.speed.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

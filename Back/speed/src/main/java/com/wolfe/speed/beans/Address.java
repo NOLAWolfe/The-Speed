@@ -18,21 +18,21 @@ public class Address implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ADDRESSID")
 	private int addressId;
 	
-	@Column
+	@Column(name = "STREETADDRESS")
 	@NotNull
 	private String streetAddress;
-	@Column
-	@NotNull
+	@Column(name = "APARTMENT")
 	private String apartment;
-	@Column
+	@Column(name = "CITY")
 	@NotNull
 	private String city;
-	@Column
+	@Column(name = "STATE")
 	@NotNull
 	private String state;
-	@Column
+	@Column(name = "ZIP")
 	@NotNull
 	private int zip;
 	public int getAddressId() {
