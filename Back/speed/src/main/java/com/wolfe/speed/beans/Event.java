@@ -29,48 +29,48 @@ public class Event implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int event_id;
+	@Column(name = "EVENTID")
+	private int eventId;
 
-	@Column
+	@Column(name = "EVENT_NAME")
 	@NotNull
 	private String event_name;
 
-	@Column
-	@NotNull
+	@Column(name = "TIMEPOSTED")
 	private LocalDateTime timeposted;
-	@Column
+	@Column(name = "TIMESTART")
 	@NotNull
 	private LocalDateTime timeStart;
-	@Column
+	@Column(name = "TIMEEND")
 	@NotNull
 	private LocalDateTime timeEnd;
 
-	@Column
+	@Column(name = "CAPTION")
 	@NotNull
 	private String caption;
-	@Column
+	@Column(name = "FLAG")
 	@NotNull
 	private int flag;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "USER_ID")
+	@JoinColumn(name = "USERID")
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private int user_id;
+	private User userId;
 
-	@OneToMany(mappedBy = "EVENT", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "eventId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<UserEvent> users = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "ADDRESS_ID")
+	@JoinColumn(name = "ADDRESSID")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Address address;
 
-	public int getEvent_id() {
-		return event_id;
+	public int geteventId() {
+		return eventId;
 	}
 
-	public void setEvent_id(int event_id) {
-		this.event_id = event_id;
+	public void seteventId(int eventId) {
+		this.eventId = eventId;
 	}
 
 	public String getEvent_name() {
@@ -81,12 +81,12 @@ public class Event implements Serializable {
 		this.event_name = event_name;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public User getuserId() {
+		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setuserId(User userId) {
+		this.userId = userId;
 	}
 
 	public LocalDateTime getTimeposted() {
@@ -137,43 +137,89 @@ public class Event implements Serializable {
 		this.flag = flag;
 	}
 
-	public Event(int event_id, String event_name, int user_id, LocalDateTime timeposted, LocalDateTime timeStart,
-			LocalDateTime timeEnd, Address address, String caption, int flag) {
-		super();
-		this.event_id = event_id;
-		this.event_name = event_name;
-		this.user_id = user_id;
-		this.timeposted = timeposted;
-		this.timeStart = timeStart;
-		this.timeEnd = timeEnd;
-		this.address = address;
-		this.caption = caption;
-		this.flag = flag;
-	}
-
 	public Event() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Event(String event_name, int user_id, LocalDateTime timeposted, LocalDateTime timeStart,
-			LocalDateTime timeEnd, Address address, String caption, int flag) {
+	public Event(int eventId, @NotNull String event_name, @NotNull LocalDateTime timeStart,
+			@NotNull LocalDateTime timeEnd, @NotNull String caption, @NotNull int flag, User userId,
+			List<UserEvent> users, Address address) {
+		super();
+		this.eventId = eventId;
+		this.event_name = event_name;
+		this.timeStart = timeStart;
+		this.timeEnd = timeEnd;
+		this.caption = caption;
+		this.flag = flag;
+		this.userId = userId;
+		this.users = users;
+		this.address = address;
+	}
+
+	public Event(@NotNull String event_name, LocalDateTime timeposted, @NotNull LocalDateTime timeStart,
+			@NotNull LocalDateTime timeEnd, @NotNull String caption, @NotNull int flag, User userId,
+			List<UserEvent> users, Address address) {
 		super();
 		this.event_name = event_name;
-		this.user_id = user_id;
 		this.timeposted = timeposted;
 		this.timeStart = timeStart;
 		this.timeEnd = timeEnd;
-		this.address = address;
 		this.caption = caption;
 		this.flag = flag;
+		this.userId = userId;
+		this.users = users;
+		this.address = address;
+	}
+
+	public Event(int eventId, @NotNull String event_name, LocalDateTime timeposted,
+			@NotNull LocalDateTime timeStart, @NotNull LocalDateTime timeEnd, @NotNull String caption,
+			@NotNull int flag, User userId, List<UserEvent> users, Address address) {
+		super();
+		this.eventId = eventId;
+		this.event_name = event_name;
+		this.timeposted = timeposted;
+		this.timeStart = timeStart;
+		this.timeEnd = timeEnd;
+		this.caption = caption;
+		this.flag = flag;
+		this.userId = userId;
+		this.users = users;
+		this.address = address;
+	}
+
+	public Event(@NotNull String event_name, @NotNull LocalDateTime timeStart, @NotNull LocalDateTime timeEnd,
+			@NotNull String caption, @NotNull int flag, User userId, List<UserEvent> users, Address address) {
+		super();
+		this.event_name = event_name;
+		this.timeStart = timeStart;
+		this.timeEnd = timeEnd;
+		this.caption = caption;
+		this.flag = flag;
+		this.userId = userId;
+		this.users = users;
+		this.address = address;
+	}
+
+	public Event(int eventId, @NotNull String event_name, @NotNull LocalDateTime timeStart,
+			@NotNull LocalDateTime timeEnd, @NotNull String caption, @NotNull int flag, User userId, Address address) {
+		super();
+		this.eventId = eventId;
+		this.event_name = event_name;
+		this.timeStart = timeStart;
+		this.timeEnd = timeEnd;
+		this.caption = caption;
+		this.flag = flag;
+		this.userId = userId;
+		this.address = address;
 	}
 
 	@Override
 	public String toString() {
-		return "Event [event_id=" + event_id + ", event_name=" + event_name + ", user_id=" + user_id + ", timeposted="
-				+ timeposted + ", timeStart=" + timeStart + ", timeEnd=" + timeEnd + ", address=" + address	
-				+ ", caption=" + caption + ", flag=" + flag + "]";
+		return "Event [eventId=" + eventId + ", event_name=" + event_name + ", timeposted=" + timeposted
+				+ ", timeStart=" + timeStart + ", timeEnd=" + timeEnd + ", caption=" + caption + ", flag=" + flag
+				+ ", userId=" + userId + ", users=" + users + ", address=" + address + "]";
 	}
 
+	
 }

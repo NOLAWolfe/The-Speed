@@ -10,10 +10,10 @@ public class UserEventId implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "USER_ID")
+	@Column(name = "userId")
 	private int userId;
 	
-	@Column(name = "EVENT_ID")
+	@Column(name = "userId")
 	private int eventId;
 
 	public int getUserId() {

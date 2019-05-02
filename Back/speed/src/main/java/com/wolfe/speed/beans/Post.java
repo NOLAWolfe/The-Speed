@@ -26,28 +26,29 @@ public class Post implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "POSTID")
 	private int postId;
 	
-	@Column
+	@Column(name = "CAPTION")
 	@NotNull
 	private String caption;
 
-	@Column
+	@Column(name = "FLAG")
 	@NotNull
 	private int flag;
 
-	@Column
+	@Column(name = "LIKES", columnDefinition = "int default 0")
 	@NotNull
 	private int likes;
 
-	@Column
+	@Column(name = "TIMECREATED")	
 	@NotNull
 	private LocalDateTime timeCreated;
 	
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "USER_ID")
+	@JoinColumn(name = "USERID")
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private int user_id;
+	private User userId;
 
 	public int getPostId() {
 		return postId;
@@ -89,12 +90,12 @@ public class Post implements Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public User getuserId() {
+		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setuserId(User userId) {
+		this.userId = userId;
 	}
 
 	public Post() {
@@ -103,30 +104,30 @@ public class Post implements Serializable {
 	}
 
 	public Post(int postId, @NotNull String caption, @NotNull int flag, @NotNull int likes,
-			@NotNull LocalDateTime timeCreated, int user_id) {
+			@NotNull LocalDateTime timeCreated, User userId) {
 		super();
 		this.postId = postId;
 		this.caption = caption;
 		this.flag = flag;
 		this.likes = likes;
 		this.timeCreated = timeCreated;
-		this.user_id = user_id;
+		this.userId = userId;
 	}
 
 	public Post(@NotNull String caption, @NotNull int flag, @NotNull int likes, @NotNull LocalDateTime timeCreated,
-			int user_id) {
+			User userId) {
 		super();
 		this.caption = caption;
 		this.flag = flag;
 		this.likes = likes;
 		this.timeCreated = timeCreated;
-		this.user_id = user_id;
+		this.userId = userId;
 	}
 
 	@Override
 	public String toString() {
 		return "Post [postId=" + postId + ", caption=" + caption + ", flag=" + flag + ", likes=" + likes
-				+ ", timeCreated=" + timeCreated + ", user_id=" + user_id + "]";
+				+ ", timeCreated=" + timeCreated + ", userId=" + userId + "]";
 	}
 	
 	

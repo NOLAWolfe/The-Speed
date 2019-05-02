@@ -25,24 +25,25 @@ public class Comment implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "COMMENTID")
 	private int commentId;
 
-	@Column
+	@Column(name = "COMMENT")
 	@NotNull
 	private String comment;
-	@Column
+	@Column(name = "FLAG")
 	@NotNull
 	private int flag;
-	@Column
+	@Column(name = "TIMECREATED")
 	@NotNull
 	private LocalDateTime timeCreated;
 
-	@Column
+	@Column(name = "LIKES", columnDefinition = "int default 0")
 	@NotNull
 	private int likes;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "USER_ID")
+	@JoinColumn(name = "USERID")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private User userid;
 
@@ -120,5 +121,4 @@ public class Comment implements Serializable {
 		this.userid = userid;
 	}
 
-	
 }

@@ -2,6 +2,7 @@ package com.wolfe.speed.beans;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,15 +17,16 @@ public class UserEvent implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
+	@Column(name = "ID")
 	private UserEventId id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@MapsId("USER_ID")
-	private User user;
+	@MapsId("userId")
+	private User userId;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@MapsId("EVENT_ID")
-	private Event event;
+	@MapsId("eventId")
+	private Event eventId;
 
 	public UserEventId getId() {
 		return id;
@@ -35,26 +37,26 @@ public class UserEvent implements Serializable {
 	}
 
 	public User getUser() {
-		return user;
+		return userId;
 	}
 
 	public void setUser(User user) {
-		this.user = user;
+		this.userId = user;
 	}
 
 	public Event getEvent() {
-		return event;
+		return eventId;
 	}
 
 	public void setEvent(Event event) {
-		this.event = event;
+		this.eventId = event;
 	}
 
 	public UserEvent(UserEventId id, User user, Event event) {
 		super();
 		this.id = id;
-		this.user = user;
-		this.event = event;
+		this.userId = user;
+		this.eventId = event;
 	}
 
 	public UserEvent() {
@@ -64,13 +66,13 @@ public class UserEvent implements Serializable {
 
 	public UserEvent(User user, Event event) {
 		super();
-		this.user = user;
-		this.event = event;
+		this.userId = user;
+		this.eventId = event;
 	}
 
 	@Override
 	public String toString() {
-		return "UserEvent [id=" + id + ", user=" + user + ", event=" + event + "]";
+		return "UserEvent [id=" + id + ", user=" + userId + ", event=" + eventId + "]";
 	}
 
 	

@@ -25,33 +25,35 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 2028103581041053472L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "USERID")
 	private int userid;
-	@Column
+	@Column(name = "FIRSTNAME")
 	@NotNull
 	private String firstname;
-	@Column
+	@Column(name = "LASTNAME")
 	@NotNull
 	private String lastname;
-	@Column
+	@Column(name = "USERNAME")
 	@NotNull
 	private String username;
-	@Column
+	@Column(name = "EMAIL")
 	@NotNull
 	private String email;
-	@Column
+	@Column(name = "PASSWORD")
 	@NotNull
 	private String password;
 
-	@Column
-	@NotNull
+	@Column(name = "WEBSITE")
 	private String website;
 
-	@Column
-	@NotNull
+	@Column(name = "BIO")
 	private String bio;
-	@Column
-	@NotNull
+	@Column(name = "BIRTHDATE")
 	private LocalDate birthdate;
+	
+	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<UserEvent> events = new ArrayList<>();
+
 
 	public int getUserid() {
 		return userid;
@@ -101,8 +103,6 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<UserEvent> events = new ArrayList<>();
 
 	public User() {
 		super();
