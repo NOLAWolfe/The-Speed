@@ -142,24 +142,10 @@ public class Event implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Event(int eventId, @NotNull String event_name, @NotNull LocalDateTime timeStart,
-			@NotNull LocalDateTime timeEnd, @NotNull String caption, @NotNull int flag, User userId,
-			List<UserEvent> users, Address address) {
-		super();
-		this.eventId = eventId;
-		this.event_name = event_name;
-		this.timeStart = timeStart;
-		this.timeEnd = timeEnd;
-		this.caption = caption;
-		this.flag = flag;
-		this.userId = userId;
-		this.users = users;
-		this.address = address;
-	}
+	
 
 	public Event(@NotNull String event_name, LocalDateTime timeposted, @NotNull LocalDateTime timeStart,
-			@NotNull LocalDateTime timeEnd, @NotNull String caption, @NotNull int flag, User userId,
-			List<UserEvent> users, Address address) {
+			@NotNull LocalDateTime timeEnd, @NotNull String caption, @NotNull int flag, User userId, Address address) {
 		super();
 		this.event_name = event_name;
 		this.timeposted = timeposted;
@@ -168,36 +154,6 @@ public class Event implements Serializable {
 		this.caption = caption;
 		this.flag = flag;
 		this.userId = userId;
-		this.users = users;
-		this.address = address;
-	}
-
-	public Event(int eventId, @NotNull String event_name, LocalDateTime timeposted,
-			@NotNull LocalDateTime timeStart, @NotNull LocalDateTime timeEnd, @NotNull String caption,
-			@NotNull int flag, User userId, List<UserEvent> users, Address address) {
-		super();
-		this.eventId = eventId;
-		this.event_name = event_name;
-		this.timeposted = timeposted;
-		this.timeStart = timeStart;
-		this.timeEnd = timeEnd;
-		this.caption = caption;
-		this.flag = flag;
-		this.userId = userId;
-		this.users = users;
-		this.address = address;
-	}
-
-	public Event(@NotNull String event_name, @NotNull LocalDateTime timeStart, @NotNull LocalDateTime timeEnd,
-			@NotNull String caption, @NotNull int flag, User userId, List<UserEvent> users, Address address) {
-		super();
-		this.event_name = event_name;
-		this.timeStart = timeStart;
-		this.timeEnd = timeEnd;
-		this.caption = caption;
-		this.flag = flag;
-		this.userId = userId;
-		this.users = users;
 		this.address = address;
 	}
 

@@ -13,7 +13,7 @@ import com.wolfe.speed.beans.User;
 import com.wolfe.speed.repositories.UserDAO;
 
 @RestController
-@RequestMapping(value="/api")
+@RequestMapping(value="/user")
 public class UserController {
 
 	private UserDAO ud;
