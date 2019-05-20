@@ -8,6 +8,7 @@ import {
   MatSnackBarModule, MatSlideToggle, MatButtonToggle, MatButton, MatRadioGroup, MatSpinner, MatDialogModule,
   MatTooltipModule, MatPaginator, MatGridTile, MatGridList, MatTab, MatRadioButton
 } from '@angular/material';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [],
@@ -35,7 +36,8 @@ import {
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatStepperModule
   ],
   exports: [
     MatButtonModule,
@@ -67,6 +69,7 @@ import {
     MatGridTile,
     MatPaginator,
     MatSpinner,
+    MatStepperModule
   ]
 })
 export class AngularMaterialsModule { }
