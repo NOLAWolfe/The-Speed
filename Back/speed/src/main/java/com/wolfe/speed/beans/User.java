@@ -44,11 +44,15 @@ public class User implements Serializable {
 	private String password;
 
 	@Column(name = "WEBSITE")
+	
 	private String website;
 
 	@Column(name = "BIO")
+	
 	private String bio;
+	
 	@Column(name = "BIRTHDATE")
+	
 	private LocalDate birthdate;
 	
 	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -143,6 +147,13 @@ public class User implements Serializable {
 		this.bio = bio;
 		this.birthdate = birthdate;
 		this.events = events;
+	}
+	
+	public User(@NotNull int userId, @NotNull String username, @NotNull String password) {
+		super();
+		this.userid = userId;
+		this.username = username;
+		this.password = password;
 	}
 
 	@Override

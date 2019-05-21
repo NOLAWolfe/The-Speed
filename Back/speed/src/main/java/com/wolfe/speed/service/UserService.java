@@ -2,6 +2,7 @@ package com.wolfe.speed.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wolfe.speed.beans.User;
@@ -12,6 +13,7 @@ public class UserService {
 	
 	private UserDAO userDAO;
 	
+	@Autowired
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
@@ -26,5 +28,8 @@ public class UserService {
 	
 	public void createUser(User user) {
 		userDAO.save(user);
+	}
+	public User findUserByUsername(String username) {
+		return userDAO.getByUsername(username);
 	}
 }

@@ -32,7 +32,7 @@ public class EventController {
 	
 	@PostMapping("/add")
 	public void addEvent(@RequestBody String jsonStr) {
-		JSONObject json = new JSONObject();
+		JSONObject json = new JSONObject(jsonStr);
 		es.createEvent(json);
 	}
 	
