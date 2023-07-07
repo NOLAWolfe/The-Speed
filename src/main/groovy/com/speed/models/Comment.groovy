@@ -36,7 +36,7 @@ class Comment implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "USERID")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private User userid;
+    private Host userid;
 
 
 }
