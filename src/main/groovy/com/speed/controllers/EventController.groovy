@@ -22,7 +22,7 @@ class EventController {
 
     @GetMapping("/")
     ResponseEntity<List<Event>> getAllEvents() {
-        new ResponseEntity<>(eventService.findAll(), HttpStatus.OK)
+        new ResponseEntity<List<Event>>(eventService.findAllEvents(), HttpStatus.OK)
     }
 
     @PostMapping("/")
