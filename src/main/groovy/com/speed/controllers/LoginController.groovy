@@ -1,6 +1,6 @@
 package com.speed.controllers
 
-import com.speed.models.User
+import com.speed.models.Host
 import com.speed.services.AuthService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -21,7 +21,7 @@ class LoginController {
 
     @CrossOrigin(origins="http://localhost:4200")
     @PostMapping(value="/attemptLogin")
-    ResponseEntity<User> LoginRequest(@RequestBody User user){
+    ResponseEntity<Host> LoginRequest(@RequestBody Host user){
         new ResponseEntity<>(authService.authUser(user), HttpStatus.OK)
     }
 }
