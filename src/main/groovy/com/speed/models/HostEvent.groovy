@@ -5,19 +5,19 @@ import groovy.transform.Canonical
 import javax.persistence.*
 
 @Entity
-@Table(name = "USER_EVENT")
+@Table(name = "HOST_EVENT")
 @Canonical
-class UserEvent implements Serializable{
+class HostEvent implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
     @EmbeddedId
     @Column(name = "ID")
-    private UserEventId id;
+    private HostEventId id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("userId")
-    private User userId;
+    private Host userId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("eventId")

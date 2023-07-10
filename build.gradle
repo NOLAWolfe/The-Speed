@@ -23,8 +23,8 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compileOnly('org.projectlombok:lombok')
-	compile group: 'javax.validation', name: 'validation-api'
-	compile group: 'org.json', name: 'json', version: '20201115'
+	implementation group: 'javax.validation', name: 'validation-api'
+	implementation group: 'org.json', name: 'json', version: '20230227'
 }
 
 test {

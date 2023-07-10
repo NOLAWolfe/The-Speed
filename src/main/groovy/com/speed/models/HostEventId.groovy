@@ -6,7 +6,7 @@ import javax.persistence.*
 
 @Embeddable
 @Canonical
-class UserEventId implements Serializable{
+class HostEventId implements Serializable{
 
     private static final long serialVersionUID = 1L;
 

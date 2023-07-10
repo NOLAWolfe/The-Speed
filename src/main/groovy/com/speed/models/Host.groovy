@@ -7,9 +7,9 @@ import javax.validation.constraints.NotNull
 import java.time.LocalDate
 
 @Entity
-@Table(name = "USER")
+@Table(name = "HOST")
 @Canonical
-class User implements Serializable{
+class Host implements Serializable{
     private static final long serialVersionUID = 2028103581041053472L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,19 +30,13 @@ class User implements Serializable{
     @Column(name = "PASSWORD")
     @NotNull
     private String password;
-
     @Column(name = "WEBSITE")
-
     private String website;
-
     @Column(name = "BIO")
-
     private String bio;
-
     @Column(name = "BIRTHDATE")
-
     private LocalDate birthdate;
 
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<UserEvent> events = new ArrayList<>();
+    private List<HostEvent> events = new ArrayList<>();
 }

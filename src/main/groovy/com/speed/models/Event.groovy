@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDelete
 import org.hibernate.annotations.OnDeleteAction
 
 import javax.persistence.*
+import java.sql.Date
 import java.time.LocalDateTime
 
 @Entity
@@ -25,13 +26,13 @@ class Event implements Serializable{
     private String event_name;
 
     @Column(name = "TIMEPOSTED")
-    private LocalDateTime timeposted;
+    private Date timeposted;
     @Column(name = "TIMESTART")
     @NotNull
-    private LocalDateTime timeStart;
+    private Date timeStart;
     @Column(name = "TIMEEND")
     @NotNull
-    private LocalDateTime timeEnd;
+    private Date timeEnd;
 
     @Column(name = "CAPTION")
     @NotNull
@@ -43,10 +44,10 @@ class Event implements Serializable{
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "USERID")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private User userId;
+    private Host userId;
 
     @OneToMany(mappedBy = "eventId", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<UserEvent> users = new ArrayList<>();
+    private List<HostEvent> hosts = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "ADDRESSID")
