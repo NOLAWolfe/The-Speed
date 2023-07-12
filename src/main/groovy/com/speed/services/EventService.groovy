@@ -2,6 +2,7 @@ package com.speed.services
 
 import com.fasterxml.jackson.databind.util.JSONPObject
 import com.speed.daos.EventDAO
+import com.speed.daos.HostDAO
 import com.speed.models.Events.Event
 import com.speed.models.Hosts.Host
 import org.springframework.beans.factory.annotation.Autowired
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service
 class EventService {
     @Autowired
     private EventDAO eventDAO
-    private HostService hostService
+    private HostDAO hostDAO
     private AddressService addressService
 
     List<Event> findAllEvents() {
@@ -24,7 +25,7 @@ class EventService {
 
     }
 
-    Event getEventById(Integer id) {
+    Event getEventById(int id) {
         Optional<Event> e = eventDAO.findById(id)
         if(e.isPresent()) {
             e.get()
@@ -33,9 +34,9 @@ class EventService {
         }
     }
 
-    List<Event> getEventsByHostId(Integer id) {
+    List<Event> getEventsByHostHostId(int id) {
         List<Event> e = new ArrayList<>()
-        Host host = hostDAO.
+        Host host = hostDAO.findByHostId(id)
         e = eventDAO.getEventsByHostId(id)
     }
 }
