@@ -1,6 +1,6 @@
 package com.speed.controllers
 
-import com.speed.models.Host
+import com.speed.models.Hosts.Host
 import com.speed.services.AuthService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus

@@ -1,5 +1,7 @@
 package com.speed.models
 
+import com.speed.models.Events.Event
+import com.speed.models.Hosts.Host
 import groovy.transform.Canonical
 
 import javax.persistence.*

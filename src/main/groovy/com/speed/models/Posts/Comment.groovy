@@ -1,5 +1,8 @@
-package com.speed.models
+package com.speed.models.Posts
 
+import com.speed.models.Hosts.Host
+import com.speed.models.Likes.CommentLikes
+import com.speed.models.Media.CommentMedia
 import groovy.transform.Canonical
 import org.hibernate.annotations.OnDelete
 import org.hibernate.annotations.OnDeleteAction
@@ -19,24 +22,32 @@ class Comment implements Serializable {
     @Column(name = "COMMENTID")
     private int commentId;
 
-    @Column(name = "COMMENT")
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Host host;
+
     @NotNull
-    private String comment;
+    @ManyToOne
+    private Post post
+
+    @Column(name = "BODY")
+    @NotNull
+    private String body;
+
     @Column(name = "FLAG")
     @NotNull
     private int flag;
-    @Column(name = "TIMECREATED")
+
+    @Column(name = "CREATEDATE")
     @NotNull
-    private LocalDateTime timeCreated;
+    private LocalDateTime createDate;
 
-    @Column(name = "LIKES", columnDefinition = "int default 0")
+    @OneToOne
+    private CommentMedia commentMedia;
+
+    @OneToOne
     @NotNull
-    private int likes;
-
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "USERID")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Host userid;
-
+    private CommentLikes commentLikes;
 
 }

@@ -1,21 +1,36 @@
 package com.speed.services
 
+import com.speed.daos.AddressDAO
+import com.speed.daos.EventDAO
 import com.speed.daos.HostDAO
-import com.speed.models.Host
+import com.speed.models.Events.Event
+import com.speed.models.Hosts.Host
+import com.speed.models.Postal.Address
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
 class AddressService {
-    HostDAO userDAO
+    AddressDAO addressDAO
+    EventDAO eventDAO
+    EventService eventService
 
     @Autowired
-    void setUserDAO(HostDAO userDAO) { this.userDAO = userDAO}
+    void setAddressDAO(AddressDAO addressDAO) { this.addressDAO = addressDAO}
 
-    List<Host> findAllUsers(){ userDAO.findAll()}
+    @Autowired
+    void setEventDAO(EventDAO eventDAO) { this.eventDAO = eventDAO}
 
-    Host getUserById(int id) { userDAO.getByUserid()}
-    void createUser(Host user) { userDAO.save(user)}
-    Host findUserByUsername(String username) {userDAO.getByUsername()}
+    void createAddress(Address address) { addressDAO.save(address)}
+
+    List<Address> findAllAddress(){ addressDAO.findAll()}
+
+    Address getAddressById(int addressId) { addressDAO.getByAddressid(addressId)}
+
+    Address findAddressByEventId(int eventId) {
+        Event event = eventService.getEventById(eventId)
+        addressDAO.findAddressByEventId(eventId)
+    }
+
 
 }

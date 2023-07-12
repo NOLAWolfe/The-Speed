@@ -12,6 +12,6 @@
 
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
-		<mapping class="com.speed.models.Host"></mapping>
+		<mapping class="com.speed.models.Hosts.Host"></mapping>
 	</session-factory>
 </hibernate-configuration>
