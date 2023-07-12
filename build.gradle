@@ -25,6 +25,9 @@ dependencies {
 	compileOnly('org.projectlombok:lombok')
 	implementation group: 'javax.validation', name: 'validation-api'
 	implementation group: 'org.json', name: 'json', version: '20230227'
+	// https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core
+	implementation group: 'com.datastax.cassandra', name: 'cassandra-driver-core', version: '1.0.0'
+
 }
 
 test {

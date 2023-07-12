@@ -7,6 +7,11 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface HostDAO extends JpaRepository<Host, Integer>{
-    Host findByHostId(int hostId)
-    Host findByUsername(String username)
+
+    Host save(Host host)
+    List<Host> findAll()
+    Host findByHostId(int id)
+    List<Host> findByUsername(String username)
+    void deleteByHostId(int id)
+    void delete(Host host)
 }
