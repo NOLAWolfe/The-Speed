@@ -1,6 +1,6 @@
 package com.speed.controllers
 
-import com.speed.models.Event
+import com.speed.models.Events.Event
 import com.speed.services.EventService
 import org.json.JSONObject
 import org.springframework.beans.factory.annotation.Autowired

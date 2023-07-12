@@ -1,12 +1,11 @@
 package com.speed.daos
 
-import com.speed.models.Address
+import com.speed.models.Events.Event
+import com.speed.models.Postal.Address
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
 interface AddressDAO extends JpaRepository<Address, Integer>{
-
-    Address findAllByZipLikeAndStreetAddressLikeAndApartment(Integer zipcode, String streetAddress, String apartment)
-
+    Address findAddressByEventEventId(int eventId)
 }

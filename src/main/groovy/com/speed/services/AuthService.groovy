@@ -1,7 +1,7 @@
 package com.speed.services
 
 
-import com.speed.models.Host
+import com.speed.models.Hosts.Host
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -12,9 +12,9 @@ class AuthService {
     @Autowired
     void setUserService(HostService hostService) {this.hostService = hostService}
 
-    Host authUser (String username, String password) {
+    Host authHost (String username, String password) {
 
-        Host host = hostService.findUserByUsername()
+        Host host = hostService.findHostByUsername(username)
 
         try{
             if(host.getProperty(username).equals(username) && host.getProperty(password).equals(password)) {

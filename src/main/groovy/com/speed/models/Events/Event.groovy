@@ -1,13 +1,16 @@
-package com.speed.models
+package com.speed.models.Events
 
+import com.speed.models.Postal.Address
+import com.speed.models.Hosts.Host
+import com.speed.models.Posts.Post
 import groovy.transform.Canonical
+import org.codehaus.groovy.runtime.ArrayUtil
 
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.OnDelete
 import org.hibernate.annotations.OnDeleteAction
 
 import javax.persistence.*
-import java.sql.Date
 import java.time.LocalDateTime
 
 @Entity
@@ -23,34 +26,36 @@ class Event implements Serializable{
 
     @Column(name = "EVENT_NAME")
     @NotNull
-    private String event_name;
+    private String eventName;
 
-    @Column(name = "TIMEPOSTED")
-    private Date timeposted;
-    @Column(name = "TIMESTART")
+    @Column(name = "BODY")
     @NotNull
-    private Date timeStart;
-    @Column(name = "TIMEEND")
-    @NotNull
-    private Date timeEnd;
+    private String body;
 
-    @Column(name = "CAPTION")
-    @NotNull
-    private String caption;
     @Column(name = "FLAG")
     @NotNull
     private int flag;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "USERID")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Host userId;
+    @Column(name = "TIMESTART")
+    @NotNull
+    private LocalDateTime timeStart;
 
-    @OneToMany(mappedBy = "eventId", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<HostEvent> hosts = new ArrayList<>();
+    @Column(name = "TIMEEND")
+    @NotNull
+    private LocalDateTime timeEnd;
+
+    @Column(name = "CREATEDATE")
+    private LocalDateTime createDate;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "ADDRESSID")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Address address;
+    private Host host;
+
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Post post;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Address address
 }
