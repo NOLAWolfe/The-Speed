@@ -19,8 +19,9 @@ class HostController {
 
     @Autowired
     private HostDAO hostDAO
-//    @Autowired
-//    void setHostService(HostService hostService) { this.hostService = hostService }
+
+    @Autowired
+    private HostService hostService
 
     @PostMapping("/s")
     ResponseEntity<Host> saveHost(Host host){

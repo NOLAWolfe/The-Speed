@@ -13,14 +13,14 @@ class Follow implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "FOLLOPWID")
+    @Column(name = "ID")
     private int followId;
 
-    @ManyToMany
-    private List<Host> hostFollowed = new ArrayList<>()
+    @ManyToOne
+    private Host followedHost
 
-    @ManyToMany
-    private List<Host> hostFollowing = new ArrayList<>()
+    @ManyToOne
+    private Host followingHost
 
     @Column(name = "CREATEDATE")
     private LocalDateTime createDate;

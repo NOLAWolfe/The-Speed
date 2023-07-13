@@ -4,6 +4,7 @@ import com.speed.models.Events.Event
 import com.speed.models.Hosts.Host
 import com.speed.models.Likes.PostLikes
 import com.speed.models.Media.PostMedia
+import com.speed.models.Media.StatusMedia
 import groovy.transform.Canonical
 
 import javax.persistence.*
@@ -16,7 +17,7 @@ class Status implements Serializable{
     private static final long serialVersionUID = 2028103581041053472L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "STATUSID")
+    @Column(name = "ID")
     private int postId;
 
     @Column(name="BODY")
@@ -28,8 +29,8 @@ class Status implements Serializable{
     @Column(name="CREATEDATE")
     private LocalDateTime createDate
 
-    @OneToMany
-    private List<PostMedia> postMedia = new ArrayList<>()
+    @OneToOne
+    private StatusMedia statusMedia
 
     @ManyToOne
     private Host host

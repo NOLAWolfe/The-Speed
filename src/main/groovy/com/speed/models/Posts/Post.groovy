@@ -16,7 +16,7 @@ class Post implements Serializable{
     private static final long serialVersionUID = 2028103581041053472L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "POSTID")
+    @Column(name = "ID")
     private int postId;
 
     @Column(name="BODY")
@@ -28,8 +28,8 @@ class Post implements Serializable{
     @OneToOne
     private PostLikes postLikes;
 
-    @OneToMany
-    private List<PostMedia> postMedia = new ArrayList<>()
+    @OneToOne
+    private PostMedia postMedia
 
     @OneToOne
     private Event event

@@ -19,7 +19,7 @@ class Comment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "COMMENTID")
+    @Column(name = "ID")
     private int commentId;
 
 

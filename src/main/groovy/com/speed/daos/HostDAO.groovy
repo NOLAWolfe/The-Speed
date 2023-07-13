@@ -10,8 +10,8 @@ interface HostDAO extends JpaRepository<Host, Integer>{
 
     Host save(Host host)
     List<Host> findAll()
-    Host findByHostId(int id)
+    Host findByHostId(UUID id)
     List<Host> findByUsername(String username)
-    void deleteByHostId(int id)
+    void deleteByHostId(UUID id)
     void delete(Host host)
 }

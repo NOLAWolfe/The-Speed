@@ -15,7 +15,7 @@ class Address implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ADDRESSID")
+    @Column(name = "ID")
     private int addressId;
 
     @Column(name = "AddressName")

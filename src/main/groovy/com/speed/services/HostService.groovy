@@ -5,17 +5,36 @@ import com.speed.models.Hosts.Host
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
+
 @Service
 class HostService {
     private HostDAO hostDAO
 
     @Autowired
     void setHostDAO(HostDAO hostDAO) { this.hostDAO = hostDAO }
-//
-//    List<Host> findAllHosts() {
-//        println("Retrieving All Hosts...")
-//        hostDAO.findAll()
-//    }
+
+    List<Host> createHost(Host host) {
+
+        Host newHost = new Host()
+        LocalDateTime ldt = LocalDateTime.now()
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMMM dd, YYYY")
+
+        host.setCreateDate(ldt)
+
+        hostDAO.save(host)
+        List<Host> result = hostDAO.findAll()
+        result
+    }
+
+
+    List<Host> findAllHosts() {
+        println("Retrieving All Hosts...")
+        hostDAO.findAll()
+    }
 //
 //    Host getHostById(int id) {
 //        println("Retrieving Host By Id: " + id)
@@ -23,8 +42,7 @@ class HostService {
 //        println("User Retrieved: " + hostDAO.getByUserid(id))
 //    }
 //
-//    void createHost(Host host) { hostDAO.save(host) }
-//
+
 //    Host findHostByUsername(String username) { hostDAO.getByUsername(username) }
 
 }
