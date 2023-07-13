@@ -32,8 +32,8 @@ class PostController {
         new ResponseEntity<List<Post>>(postDAO.findAll(), HttpStatus.OK)
     }
     @PostMapping(value="/gpbi")
-    ResponseEntity<Post> getPostById(@RequestBody int postId) {
-        new ResponseEntity<Post>(postDAO.findByPostId(postId), HttpStatus.OK)
+    ResponseEntity<Post> getPostById(@RequestBody UUID Id) {
+        new ResponseEntity<Post>(postDAO.findByPostId(Id), HttpStatus.OK)
     }
 
 

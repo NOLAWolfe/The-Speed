@@ -17,7 +17,7 @@ class Post implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int postId;
+    private UUID postId;
 
     @Column(name="BODY")
     private String body;

@@ -22,9 +22,13 @@ dependencies {
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	compileOnly('org.projectlombok:lombok')
 	implementation group: 'javax.validation', name: 'validation-api'
 	implementation group: 'org.json', name: 'json', version: '20230227'
+
+	//	compileOnly('org.projectlombok:lombok')
+	// https://mvnrepository.com/artifact/org.projectlombok/lombok
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+
 	// https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core
 	implementation group: 'com.datastax.cassandra', name: 'cassandra-driver-core', version: '1.0.0'
 
