@@ -2,6 +2,8 @@ package com.speed.services
 
 import com.speed.daos.HostDAO
 import com.speed.models.Hosts.Host
+import lombok.AllArgsConstructor
+import org.json.JSONObject
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -11,20 +13,19 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 @Service
+@AllArgsConstructor
 class HostService {
+
+    @Autowired
     private HostDAO hostDAO
 
     @Autowired
     void setHostDAO(HostDAO hostDAO) { this.hostDAO = hostDAO }
 
     List<Host> createHost(Host host) {
-
-        Host newHost = new Host()
         LocalDateTime ldt = LocalDateTime.now()
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMMM dd, YYYY")
-
         host.setCreateDate(ldt)
-
         hostDAO.save(host)
         List<Host> result = hostDAO.findAll()
         result
@@ -35,14 +36,23 @@ class HostService {
         println("Retrieving All Hosts...")
         hostDAO.findAll()
     }
-//
-//    Host getHostById(int id) {
-//        println("Retrieving Host By Id: " + id)
-//        hostDAO.getByHostid(id)
-//        println("User Retrieved: " + hostDAO.getByUserid(id))
-//    }
-//
 
-//    Host findHostByUsername(String username) { hostDAO.getByUsername(username) }
+    Host getHostById(String id) {
+        JSONObject json = new JSONObject(id)
+        Host host = hostDAO.findByHostId(json.getInt("id"))
+        host
+    }
 
+    Host getHostByUsername(String username){
+
+        JSONObject json = new JSONObject(username)
+        Host host = hostDAO.findByUsername(json.getString("username"))
+        host
+    }
+
+    List<Host> deleteByHostId(String id){
+        JSONObject json = new JSONObject(id)
+        Host host = hostDAO.deleteByHostId(json.getInt("id"))
+        hostDAO.findAll()
+    }
 }

@@ -15,7 +15,7 @@ interface PostDAO extends JpaRepository<Post, Integer>{
 
     Post save(Post post)
     List<Post> findAll()
-    Post findByPostId(int postId)
-    List<Post> findPostsByHostHostId(UUID hostId)
+    Post findByPostId(UUID postId)
+    List<Post> findPostsByHostHostId(int hostId)
     Post findPostByHostUsername(String username)
 }

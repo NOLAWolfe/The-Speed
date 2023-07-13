@@ -41,7 +41,7 @@ class EventController {
     }
 
     @PostMapping("/gebhi")
-    ResponseEntity<List<Event>> getEventsByHostId(@RequestBody int userId) {
+    ResponseEntity<List<Event>> getEventsByHostId(@RequestBody UUID userId) {
         new ResponseEntity<List<Event>>(this.eventDAO.findByHostHostId(userId), HttpStatus.OK)
     }
     @PostMapping("/debi")
