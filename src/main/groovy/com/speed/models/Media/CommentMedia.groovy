@@ -18,7 +18,7 @@ class CommentMedia implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "COMMENT_MEDIAID")
+    @Column(name = "ID")
     private int commentMediaID
 
     @OneToOne

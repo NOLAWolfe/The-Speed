@@ -18,7 +18,7 @@ import java.time.LocalDateTime
 class PostLikes implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="POSTLIKEID")
+    @Column(name="ID")
     private int postLikeID;
 
     @Column(name="LIKECOUNT")

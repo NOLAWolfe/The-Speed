@@ -18,12 +18,12 @@ class HostMedia implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "HOST_MEDIAID")
+    @Column(name = "ID")
     private int hostMediaID
 
     @OneToOne
     private Host host
 
-    @ManyToMany
-    private List<Media> media = new ArrayList<>()
+    @OneToOne
+    private Media media
 }

@@ -20,12 +20,12 @@ class StatusMedia implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "STATUS_MEDIAID")
+    @Column(name = "ID")
     private int statusMediaID
 
     @OneToOne
     private Status status
 
-    @ManyToMany
-    private List<Media> media = new ArrayList<>()
+    @OneToOne
+    private Media media
 }

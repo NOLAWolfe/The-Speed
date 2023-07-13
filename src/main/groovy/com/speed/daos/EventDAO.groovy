@@ -15,7 +15,7 @@ interface EventDAO extends JpaRepository<Event,Integer> {
     Event save(Event event)
     List<Event> findAll()
     Event findByEventId(int id)
-    List<Event> findByHostHostId(int id)
+    List<Event> findByHostHostId(UUID id)
     void deleteByEventId(int id)
     void delete(Event event)
 }

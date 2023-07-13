@@ -12,7 +12,7 @@ import java.time.LocalDateTime
 class StatusLikes implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="STATUSLIKEID")
+    @Column(name="ID")
     private int statusLikeID;
 
     @Column(name="LIKECOUNT")
