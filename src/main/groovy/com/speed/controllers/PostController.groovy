@@ -13,38 +13,36 @@ import org.springframework.web.bind.annotation.*
 import java.lang.reflect.Array
 
 @RestController
-@RequestMapping(value = "api/postService")
+@RequestMapping(value = "/post")
 class PostController {
 
     @Autowired
     private PostDAO postDAO
 
-//    @Autowired
-//    void setPostService(PostService postService) { this.postService = postService }
+    @Autowired
+    private PostService postService
 
-
-    @PostMapping(value = "/sp")
-    ResponseEntity<Post> savePost(@RequestBody Post post) {
-        new ResponseEntity<>(postDAO.save(post), HttpStatus.OK)
+    @PostMapping(value = "/s")
+    ResponseEntity<List<Post>> savePost(@RequestBody Post post) {
+        new ResponseEntity<>(postService.createPost(post), HttpStatus.CREATED)
     }
-    @GetMapping("/a")
+    @GetMapping("/")
     ResponseEntity<List<Post>> findAllPosts() {
-        new ResponseEntity<List<Post>>(postDAO.findAll(), HttpStatus.OK)
+        new ResponseEntity<List<Post>>(postService.findAllPost(), HttpStatus.OK)
     }
     @PostMapping(value="/gpbi")
-    ResponseEntity<Post> getPostById(@RequestBody UUID Id) {
-        new ResponseEntity<Post>(postDAO.findByPostId(Id), HttpStatus.OK)
+    ResponseEntity<Post> getPostById(@RequestBody String Id) {
+        new ResponseEntity<Post>(postService.findPostById(Id), HttpStatus.OK)
     }
-
 
     @PostMapping(value = "/gpbhi")
-    ResponseEntity<List<Post>> findPostByHostId(@RequestBody int hostId) {
-        new ResponseEntity<>(postDAO.findPostsByHostHostId(hostId), HttpStatus.OK)
-    }
-    @PostMapping(value = "/gpbhu")
-    ResponseEntity<Post> findPostByHostUsername(@RequestBody String hostUsername) {
-        new ResponseEntity<Post>(postDAO.findPostByHostUsername(hostUsername), HttpStatus.OK)
+    ResponseEntity<List<Post>> findPostByHostId(@RequestBody String hostId) {
+        new ResponseEntity<>(postService.findPostsByHostId(hostId), HttpStatus.OK)
     }
 
+    @PostMapping(value="/dpbi")
+    ResponseEntity<List<Post>> deleteById(@RequestBody String postId){
+        new ResponseEntity<>(postService.deleteByPostId(postId), HttpStatus.OK)
+    }
 
 }

@@ -24,7 +24,6 @@ class HostService {
 
     List<Host> createHost(Host host) {
         LocalDateTime ldt = LocalDateTime.now()
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMMM dd, YYYY")
         host.setCreateDate(ldt)
         hostDAO.save(host)
         List<Host> result = hostDAO.findAll()
@@ -39,12 +38,11 @@ class HostService {
 
     Host getHostById(String id) {
         JSONObject json = new JSONObject(id)
-        Host host = hostDAO.findByHostId(json.getInt("id"))
+        Host host = hostDAO.findByHostId(json.getInt("hostid"))
         host
     }
 
     Host getHostByUsername(String username){
-
         JSONObject json = new JSONObject(username)
         Host host = hostDAO.findByUsername(json.getString("username"))
         host
